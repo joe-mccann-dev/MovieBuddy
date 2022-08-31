@@ -1,2 +1,70 @@
-<h1>MovieBuddy</h1>
-<%= @finder.title %>
+<div class="container">
+  <div class="credits">
+    <div class="github-logo">
+      <a href="https://github.com/joe-mccann-dev/MovieBuddy">
+        <img src="images/GitHub-Mark-32px.png" alt="github icon">
+      </a>
+    </div>
+    <div class="myself">
+      <a href="https://joe-mccann.dev">&copy; 2022 Joe McCann</a>
+    </div>
+  </div>
+  <h1>MovieBuddy</h1>
+  <div class="form">
+    <form class="form" action="/" accept-charset="UTF-8" method="get">
+      <div class="field">
+        <label for="title">title</label>
+        <input required="required" placeholder="Search by title or title contents." type="text" name="title" id="title">
+      </div>
+      <div class="field">
+        <label for="release_year">release year</label>
+        <input min="1888" max="2023" placeholder="year" type="number" name="release_year" id="release_year">
+      </div>    
+      <input type="submit" value="Find Movies" data-disable-with="Find Movies">
+    </form>
+  </div>
+  
+  <% if @finder && @finder.results %>
+    <ul class="results">
+    <% @finder.results.each do |result| %>
+      <li class="result">
+        <% if result["Poster"] != 'N/A' %>
+          <img src="<%= result["Poster"] %>" alt="Movie Poster for <%= result["Title"] %>">
+        <% else %>
+          <img src="https://dummyimage.com/300x425/555/fff.png&text=no+poster+found" alt="Placeholder image">
+        <% end %>
+        <ul class="movie-details">
+          <li class="detail">
+            <div class="detail-category">Title:</div>
+            <div>
+              <a href="<%= result["imdb_page"]%>"><%= result["Title"]%></a>
+            </div>
+          </li>
+          <li class="detail">
+            <div class="detail-category">Year:</div>
+            <div><%= result["Year"] %></div>
+          </li>
+          <li class="detail">
+            <div class="detail-category">Runtime:</div>
+            <div><%= result["Runtime"] %></div>
+          </li>
+          <li class="detail">
+            <div class="detail-category">Actors:</div>
+            <div><%= result["Actors"]%></div>
+          </li>
+          <li class="detail">
+            <div class="detail-category">IMDb rating:</div>
+            <div><%= result["imdbRating"]%></div>
+          </li>
+          <li class="detail">
+            <div class="detail-category">Plot:</div>
+            <div><%= result["Plot"]%></div>
+          </li>
+        </ul>
+      </li>
+    <% end %>
+    </ul>
+  <% elsif @finder %>
+    <p class="error">No results found.</p>
+  <% end %>
+</div>
