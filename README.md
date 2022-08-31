@@ -1,0 +1,1 @@
+A Sinatra app that accesses the OMDb API and returns a list of movies. I made this app in Rails, but I think its simple nature warrants giving the Sinatra approach a try.
