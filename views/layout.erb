@@ -10,4 +10,14 @@
 <body>
   <%= yield %>
 </body>
+<script>
+  const form = document.querySelector('.form');
+  const spinner = document.querySelector('#loading-spinner')
+  const results = document.querySelector('.results')
+  const showLoadingSpinner = () => {
+    spinner.style.display = 'block'
+    results.style.display = 'none'
+  }
+  form.addEventListener("submit", showLoadingSpinner)
+</script>
 </html>

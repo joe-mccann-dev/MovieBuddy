@@ -1,8 +1,10 @@
 <li class="result">
     <% if result["Poster"] != 'N/A' %>
-      <img src="<%= result["Poster"] %>" alt="Movie Poster for <%= result["Title"] %>">
+      <a href="<%= result["imdb_page"]%>">
+        <img class="poster" src="<%= result["Poster"] %>" alt="Movie Poster for <%= result["Title"] %>">
+      </a>
     <% else %>
-      <img src="https://dummyimage.com/300x425/555/fff.png&text=no+poster+found" alt="Placeholder image">
+      <img class="poster" src="https://dummyimage.com/300x425/555/fff.png&text=no+poster+found" alt="Placeholder image">
     <% end %>
     <ul class="movie-details">
       <li class="detail">
@@ -33,3 +35,4 @@
       </li>
     </ul>
 </li>
+<hr>

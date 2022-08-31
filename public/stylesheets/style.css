@@ -17,13 +17,14 @@ body {
  font-family: 'Lato', sans-serif;
  padding: 12px;
  width: 100%;
+ height: 100%;
  color: #262626;
 }
 
 .credits {
  display: flex;
  justify-content: space-between;
- align-items: center;
+ align-items: flex-end;
 }
 
 .github-logo {
@@ -36,14 +37,20 @@ body {
 }
 
 .container {
+ margin-top: 24px;
  padding: 48px;
  border: solid #fbbf24 4px;
  border-radius: 12px;
  background-color: #d4d4d4;
+ height: 720px;
+ overflow-y: scroll;
 }
 
 .brand {
   color: #262626;
+  border-top: solid #0891b2 2px;
+  border-bottom: solid #0891b2 2px;
+  padding: 4px;
 }
 
 .form {
@@ -85,10 +92,19 @@ label {
  font-size: 1.2rem;
 }
 
+#loading-spinner {
+  display: none;
+  text-align: center;
+}
+
 .result {
  display: flex;
  align-items: center;
  padding: 16px 0;
+}
+
+.poster {
+  border-radius: 12px;;
 }
 
 .movie-details {

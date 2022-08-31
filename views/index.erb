@@ -11,6 +11,9 @@
   </div>
   <h1><a href="/" class="brand">MovieBuddy</a></h1>
   <%= erb :form %>
+  <div id="loading-spinner">
+    <img src="images/Spinner-1s-200px.gif" alt="loading indicator" />
+  </div>
   <% if @results %>
     <ul class="results">
       <%= erb :results, collection: @results %>
