@@ -2,17 +2,16 @@ require 'json'
 require 'typhoeus'
 
 class MovieFinder
-  attr_reader :title, :release_year, :imdb_ids, :results
+  attr_reader :title, :release_year, :imdb_ids, :movies
 
   def initialize(title, release_year = nil)
-    @title = title.downcase.strip
+    @title = title.downcase
     @release_year = release_year
     @imdb_ids = imdb_ids
-    @results = movies if @imdb_ids
+    @movies = find_movies
   end
 
   def imdb_ids
-    # first response returns list of movie objects with imdbID keys
     data = JSON.parse(initial_request.body)
     initial_results = data["Search"]
     return unless initial_results
@@ -20,13 +19,16 @@ class MovieFinder
     initial_results.map { |result| result["imdbID"] }
   end
 
+  # first response returns list of movie objects with imdbID keys
+  # imdb id only accessible by first doing a generic search
+  # once relevant ids are available, we can get more complete details by requesting with the id parameter
   def initial_request
-    # imdb id only accessible by first doing a generic search
-    # once relevant ids are available, we can get more complete details by requesting with the id parameter
     Typhoeus.get("https://www.omdbapi.com/?apikey=#{ENV["OMDB_API_KEY"]}&s=#{title}&type=movie&y=#{release_year}")
   end
 
-  def movies
+  def find_movies
+    return unless imdb_ids
+
     # improve performance by caching requests and making requests in parallel
     hydra = Typhoeus::Hydra.new
     requests = parallel_requests(hydra)

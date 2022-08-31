@@ -42,11 +42,16 @@ body {
  background-color: #d4d4d4;
 }
 
+.brand {
+  color: #262626;
+}
+
 .form {
  display: flex;
  align-items: flex-end;
  gap: 32px;
  width: 100%;
+ margin-bottom: 12px;
 }
 
 input {
@@ -110,8 +115,10 @@ a {
 }
 
 .error {
+ text-align: center;
  color: #eee;
- background-color: orangered;
+ background-color: #ef4444;
  padding: 12px;
  font-weight: 700;
+ border-radius: 12px;
 }
