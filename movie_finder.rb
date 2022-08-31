@@ -11,20 +11,7 @@ class MovieFinder
     @movies = find_movies
   end
 
-  def imdb_ids
-    data = JSON.parse(initial_request.body)
-    initial_results = data["Search"]
-    return unless initial_results
-
-    initial_results.map { |result| result["imdbID"] }
-  end
-
-  # first response returns list of movie objects with imdbID keys
-  # imdb id only accessible by first doing a generic search
-  # once relevant ids are available, we can get more complete details by requesting with the id parameter
-  def initial_request
-    Typhoeus.get("https://www.omdbapi.com/?apikey=#{ENV["OMDB_API_KEY"]}&s=#{title}&type=movie&y=#{release_year}")
-  end
+  private
 
   def find_movies
     return unless imdb_ids
@@ -38,6 +25,21 @@ class MovieFinder
       response["imdb_page"] = imdb_page(response["imdbID"])
       response
     end
+  end
+
+  def imdb_ids
+    data = JSON.parse(initial_request.body)
+    initial_results = data["Search"]
+    return unless initial_results
+
+    initial_results.map { |result| result["imdbID"] }
+  end
+
+  # first response returns list of movie objects with imdbID keys
+  # imdb id only accessible by first doing a generic search
+  # once relevant ids are available, we can get more complete details by requesting with the id parameter
+  def initial_request
+    Typhoeus.get("https://www.omdbapi.com/?apikey=#{ENV["OMDB_API_KEY"]}&s=#{title}&type=movie&y=#{release_year}")
   end
 
   def parallel_requests(hydra)
