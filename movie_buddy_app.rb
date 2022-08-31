@@ -7,7 +7,7 @@ get '/' do
     @results = @finder.movies
   end
 
-  erb :layout do
+  erb :layout, layout: false do
     erb :index
   end
 end
