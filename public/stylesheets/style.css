@@ -104,7 +104,9 @@ label {
 }
 
 .poster {
-  border-radius: 12px;;
+  border-radius: 12px;
+  max-height: 300px;
+  max-width: 200px;
 }
 
 .movie-details {
