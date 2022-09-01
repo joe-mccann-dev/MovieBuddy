@@ -43,7 +43,7 @@ body {
  border-radius: 12px;
  background-color: #d4d4d4;
  height: 720px;
- overflow-y: scroll;
+ overflow-y: auto;
 }
 
 .brand {
