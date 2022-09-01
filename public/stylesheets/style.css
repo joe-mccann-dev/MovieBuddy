@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 :root {
+  --slate50: #f8fafc;
   --slate200: #e2e8f0;
+  --slate600: #475569;
   --neutral800: #262626;
   --cyan400: #22d3ee;
   --cyan800: #0891b2;
@@ -35,10 +37,6 @@ body {
   align-items: flex-end;
 }
 
-.github-logo {
-  color: var(--cyan400);
-}
-
 .github-logo:hover {
   transform: rotate(-360deg);
   transition: .4s;
@@ -56,7 +54,7 @@ body {
 
 .brand {
   color: var(--neutral800);
-  border-bottom: solid var(--cyan800) 4px;
+  border-bottom: solid var(--slate600) 4px;
   padding: 4px;
 }
 
@@ -83,7 +81,8 @@ input[type="submit"] {
   font-weight: 700;
   flex: 1;
   width: 180px;
-  background-color: var(--cyan400);
+  background-color: var(--slate600);
+  color: var(--slate200);
   cursor: pointer;
 }
 
@@ -141,12 +140,12 @@ label {
 
 a {
   text-decoration: none;
-  color: var(--cyan800);
+  color: var(--slate600);
 }
 
 .error {
   text-align: center;
-  color: #eee;
+  color: var(--slate50);
   background-color: var(--red500);
   padding: 12px;
   font-weight: 700;
