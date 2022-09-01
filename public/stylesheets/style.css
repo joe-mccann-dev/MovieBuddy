@@ -99,6 +99,10 @@ label {
   font-size: 1.1rem;
 }
 
+.required {
+  color: var(--red500);
+}
+
 #loading-spinner {
   display: none;
   text-align: center;
