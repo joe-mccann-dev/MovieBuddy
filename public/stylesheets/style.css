@@ -71,6 +71,8 @@ input {
   border-radius: 8px;
   font-size: 0.9rem;
   padding: 8px 16px;
+  color: var(--slate600);
+  background-color: var(--slate50);
 }
 
 input[type="text"] {
