@@ -1,5 +1,6 @@
 require 'json'
 require 'typhoeus'
+require './movie_search_cache.rb'
 
 class MovieFinder
   attr_reader :title, :release_year, :imdb_ids, :movies, :api_limit_reached
@@ -36,15 +37,15 @@ class MovieFinder
     initial_results.map { |result| result["imdbID"] }
   end
 
+  def initial_response
+    JSON.parse(initial_request.body)
+  end
+
   # first response returns list of movie objects with imdbID keys
   # imdb id only accessible by first doing a generic search
   # once relevant ids are available, we can get more complete details by requesting with the id parameter
   def initial_request
     Typhoeus.get("https://www.omdbapi.com/?apikey=#{ENV["OMDB_API_KEY"]}&s=#{title}&type=movie&y=#{release_year}")
-  end
-
-  def initial_response
-    JSON.parse(initial_request.body)
   end
 
   def parallel_requests(hydra)
