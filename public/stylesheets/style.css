@@ -73,6 +73,9 @@ input {
   padding: 8px 16px;
   color: var(--slate600);
   background-color: var(--slate50);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input[type="text"] {
