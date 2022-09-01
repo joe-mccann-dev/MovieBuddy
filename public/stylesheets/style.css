@@ -2,11 +2,16 @@
 
 :root {
   --slate200: #e2e8f0;
+  --neutral800: #262626;
+  --cyan400: #22d3ee;
+  --cyan800: #0891b2;
+  --amber400: #fbbf24;
+  --red500: #ef4444;
 }
 
 html {
   box-sizing: border-box;
-  background-color: #262626;
+  background-color: var(--neutral800);
 }
 
 ul {
@@ -21,7 +26,7 @@ body {
   align-items: center;
   font-family: 'Lato', sans-serif;
   padding: 12px;
-  color: #262626;
+  color: var(--neutral800);
 }
 
 .credits {
@@ -31,7 +36,7 @@ body {
 }
 
 .github-logo {
-  color: #22d3ee;
+  color: var(--cyan400);
 }
 
 .github-logo:hover {
@@ -42,7 +47,7 @@ body {
 .container {
   margin-top: 24px;
   padding: 48px;
-  border: solid #fbbf24 4px;
+  border: solid var(--amber400) 4px;
   border-radius: 12px;
   background-color: var(--slate200);
   max-height: 720px;
@@ -50,15 +55,14 @@ body {
 }
 
 .brand {
-  color: #262626;
-  border-bottom: solid #0891b2 4px;
+  color: var(--neutral800);
+  border-bottom: solid var(--cyan800) 4px;
   padding: 4px;
 }
 
 .form {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
   align-items: flex-end;
   gap: 32px;
   width: 100%;
@@ -79,7 +83,7 @@ input[type="submit"] {
   font-weight: 700;
   flex: 1;
   width: 180px;
-  background-color: #22d3ee;
+  background-color: var(--cyan400);
   cursor: pointer;
 }
 
@@ -133,13 +137,13 @@ label {
 
 a {
   text-decoration: none;
-  color: #0891b2;
+  color: var(--cyan800);
 }
 
 .error {
   text-align: center;
   color: #eee;
-  background-color: #ef4444;
+  background-color: var(--red500);
   padding: 12px;
   font-weight: 700;
   border-radius: 12px;
