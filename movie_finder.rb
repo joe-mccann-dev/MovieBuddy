@@ -2,13 +2,14 @@ require 'json'
 require 'typhoeus'
 
 class MovieFinder
-  attr_reader :title, :release_year, :imdb_ids, :movies
-
+  attr_reader :title, :release_year, :imdb_ids, :movies, :api_limit_reached
+  
   def initialize(title, release_year = nil)
     @title = title.downcase
     @release_year = release_year
     @imdb_ids = imdb_ids
     @movies = find_movies
+    @api_limit_reached = initial_response["Error"] == "Request limit reached!"
   end
 
   private
@@ -28,8 +29,8 @@ class MovieFinder
   end
 
   def imdb_ids
-    data = JSON.parse(initial_request.body)
-    initial_results = data["Search"]
+    body = initial_response      
+    initial_results = body["Search"]
     return unless initial_results
 
     initial_results.map { |result| result["imdbID"] }
@@ -40,6 +41,10 @@ class MovieFinder
   # once relevant ids are available, we can get more complete details by requesting with the id parameter
   def initial_request
     Typhoeus.get("https://www.omdbapi.com/?apikey=#{ENV["OMDB_API_KEY"]}&s=#{title}&type=movie&y=#{release_year}")
+  end
+
+  def initial_response
+    JSON.parse(initial_request.body)
   end
 
   def parallel_requests(hydra)
