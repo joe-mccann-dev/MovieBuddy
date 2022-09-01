@@ -26,5 +26,8 @@ DEPENDENCIES
   sinatra
   typhoeus (~> 1.4)
 
+RUBY VERSION
+   ruby 3.1.2p20
+
 BUNDLED WITH
    2.3.10
