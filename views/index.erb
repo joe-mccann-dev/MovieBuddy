@@ -16,13 +16,13 @@
   </div>
 
   <% if @finder %>
-      <% if @results %>
-        <ul class="results">
-          <%= erb :results, collection: @results %>
-        </ul>
-      <% else %>
-        <p class="error">No results found.</p>
-      <% end %>
+    <% if @results %>
+      <ul class="results">
+        <%= erb :results, collection: @results %>
+      </ul>
+    <% else %>
+      <p class="error">No results found.</p>
+    <% end %>
     <% if @finder.api_limit_reached %>
       <p class="error">The api_key for this app has reached its daily limit of allotted requests. Try again tomorrow.</p>
     <% end %>
