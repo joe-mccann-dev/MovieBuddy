@@ -157,3 +157,7 @@ a {
   font-weight: 700;
   border-radius: 12px;
 }
+
+@media only screen and (max-width: 450px) {
+  .result { justify-content: center; }
+}
