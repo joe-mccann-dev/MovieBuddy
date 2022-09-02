@@ -8,7 +8,7 @@ my original Rails app: https://github.com/joe-mccann-dev/movie-finder
 1. clone repo
 2. `bundle install`
 3. Get your free API key at https://www.omdbapi.com/
-6. setup local environment variable: `echo "export OMDB_API_KEY=12345678 >> ~/.bashrc`
+6. setup local environment variable: `echo "export OMDB_API_KEY=12345678" >> ~/.bashrc`
 7. start up rack: `rackup -p 4567`
 8. Search for some movies.
 
