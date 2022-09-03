@@ -47,6 +47,7 @@ body {
   border-radius: 12px;
   background-color: var(--slate200);
   max-height: 720px;
+  flex: 0 1 768px;
   overflow-y: auto;
 }
 
