@@ -18,6 +18,10 @@
     spinner.style.display = 'block'
     results.style.display = 'none'
   }
-  form.addEventListener("submit", showLoadingSpinner)
+  form.addEventListener("submit", showLoadingSpinner);
+  // prevent spinner from showing if user clicks the browser's 'back' button
+  window.onpageshow = function(event) {
+    if (event.persisted) { spinner.style.display = 'none' }
+  };
 </script>
 </html>
