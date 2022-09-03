@@ -2,7 +2,7 @@
   <form class="form" action="/" accept-charset="UTF-8" method="get">
     <div class="field">
       <label for="title">title<span class="required">*</span></label>
-      <input required="required" placeholder="Search by title or title contents." type="text" name="title" id="title" minlength="3" maxlength="1000">
+      <input required="required" placeholder="Search by title or title contents." type="text" name="title" id="title" value="<%= params["title"] %>" minlength="3" maxlength="1000">
     </div>
     <div class="field">
       <label for="release_year">release year</label>
