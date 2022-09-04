@@ -13,6 +13,10 @@ class MovieFinder
     @api_limit_reached = initial_response["Error"] == "Request limit reached!"
   end
 
+  def imdb_title_results
+    "https://www.imdb.com/find?q=#{title}&s=tt"
+  end
+
   private
 
   def find_movies

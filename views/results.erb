@@ -3,3 +3,4 @@
 <% @movies.each do |movie| %>
   <%= erb :result, locals: { result: movie} %>
 <% end %>
+<h4>Find more results at <a href="<%= @finder.imdb_title_results %>">IMDb</a>.</h4>
