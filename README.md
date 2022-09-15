@@ -1,7 +1,7 @@
 # README
-A Sinatra app that accesses the OMDb API and returns a list of movies. I made this app in Rails, but I think its simple nature warrants giving the Sinatra approach a try.
+A Sinatra app that accesses the OMDb API and returns a list of movies. This was my first time using Sinatra. It seemed like the appropriate choice for an application like this.
 
-my original Rails app: https://github.com/joe-mccann-dev/movie-finder
+![Alt text](/public/images/movie-buddy-screenshot.png "Searching for 'Lord of The Rings' movies by title")
 
 ## Local Installation
 
