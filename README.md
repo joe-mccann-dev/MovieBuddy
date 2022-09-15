@@ -12,9 +12,13 @@ A Sinatra app that accesses the OMDb API and returns a list of movies. This was 
 7. start up rack: `rackup -p 4567`
 8. Search for some movies.
 
-### About API Requests
+### Code Structure and API Requests
 
-The way this particular API is structured required me to first make an "initial request" to get all of the ids returned by a title search, and then using `map`, iterate over each id to cache requests and make requests in parallel. Querying this API with the movie's id grants more information, such as "Actors" and "Plot". I used the `Typhoeus` gem to make requests in parallel, see: https://github.com/typhoeus/typhoeus. As the maintainer's state, "Typhoeus wraps libcurl in order to make fast and reliable requests." This seemed like a good fit for making several requests in parallel with the added benefit of caching requests. `movie_search_cache.rb` contains the setup required for proper caching.
+The root route is contained within `movie_buddy_app.rb` file which is required and run in the `config.ru` file.  When the root route is hit, a `MovieFinder` object is initialized ( `@finder` ) if the title parameter is present. Then, the app sends two or more requests to the OMDb API, an initial request to get the movie ids of all movies returned by the title search. Then, another request for each id returned by the initial request. See: [MovieFinder#imdb_ids](https://github.com/joe-mccann-dev/MovieBuddy/blob/8fb7bc229599bd01cc8419f260a598d732a478bf/movie_finder.rb#L36) for more details.
+
+ Querying this API with the returned ids grants more information, such as "Actors" and "Plot". I used the `Typhoeus` gem to make requests in parallel, see: https://github.com/typhoeus/typhoeus. 
+ 
+ As the maintainer's state, "Typhoeus wraps libcurl in order to make fast and reliable requests." This seemed like a good fit for making several requests in parallel with the added benefit of caching requests. See [movie_search_cache.rb](https://github.com/joe-mccann-dev/MovieBuddy/blob/8fb7bc229599bd01cc8419f260a598d732a478bf/movie_search_cache.rb#L1contains) and [caching with Typhoeus](https://github.com/typhoeus/typhoeus#caching) for more details regarding caching.
 
 ### Further thoughts
 
